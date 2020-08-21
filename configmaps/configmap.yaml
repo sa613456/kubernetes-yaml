@@ -7,4 +7,3 @@ data:
     {
       "environment" : "dev"
     }
-# kubectl create configmap kubernetes-config --from-file ./golang/configs/config.json
