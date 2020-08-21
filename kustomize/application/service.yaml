@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-service
+  namespace: dot-monitoring
+  labels:
+    app: kubernetes-dashboard
+spec:
+  type: LoadBalancer
+  selector:
+    app: kubernetes-dashboard
+  ports:
+    - protocol: TCP
+      name: http
+      port: 443
+      targetPort: 5000

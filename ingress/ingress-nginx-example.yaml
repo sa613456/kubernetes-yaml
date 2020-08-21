@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /   #new 
+  name: kubernetes-dashboard
+  namespace: dot-monitoring
+spec:
+  tls:
+  - hosts:
+    - marcel.test
+    secretName: marcel-tls-secret
+  rules:
+  - host: marcel.test
+    http:
+      paths:
+      - path: /v1/hello
+        backend:
+          serviceName: kubernetes-service
+          servicePort: 443
+      - path: /v2/hello
+        backend:
+          serviceName: kubernetes-service
+          servicePort: 443
